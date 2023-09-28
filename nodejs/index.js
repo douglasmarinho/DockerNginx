@@ -10,14 +10,19 @@ const config ={
 const mysql = require('mysql')
 const connection= mysql.createConnection(config)
 
-const sql = `INSERT INTO people(name) values ('Douglas')`
+const sql2 = `INSERT INTO people(name) values ('Douglas')`
+const sql = "CREATE TABLE IF NOT EXISTS people ( id int auto_increment primary key, name varchar(250) not null)"
+
 connection.query(sql)
+connection.query(sql2)
 connection.end()
 
 app.get('/', (req, res)=>{
+
     res.send('<h1>Full Cycle Rocks!</h1>')
 })
 
 app.listen(port, ()=>{
     console.log('Rodando na porta ' + port)
 })
+
