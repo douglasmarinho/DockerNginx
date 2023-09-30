@@ -10,6 +10,9 @@ services:
     entrypoint: dockerize -wait tcp://db:3306 -timeout 60s docker-entrypoint.sh 
     command: [ "node","index.js" ]
     container_name: app
+    volumes:
+      - ./nodejs:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - desafio-fullcycle
     tty: true
